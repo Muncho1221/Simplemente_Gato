@@ -90,7 +90,13 @@ body {
   text-align: center;
 }
 
-/* ===== Botón ===== */
+/* ===== Botones ===== */
+.controles {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
 .boton {
   font-family: var(--fuente-pixel);
   font-size: 0.9rem;
@@ -125,6 +131,16 @@ body {
 .boton:focus-visible {
   outline: 4px dashed var(--color-blanco);
   outline-offset: 8px;
+}
+
+/* Botón cuadrado de sonido; en gris cuando está silenciado */
+.boton--icono {
+  padding: 12px 16px;
+  font-size: 1.1rem;
+}
+
+.boton--icono[aria-pressed="true"] {
+  background-color: #9A8FB0;
 }
 
 .boton:disabled {
