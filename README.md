@@ -120,10 +120,8 @@ Para la creación de este proyecto se usó Claude Pro :P
 
 ### Lo que hice yo sin ayuda de IA
 
-<!-- COMPLETAR: revisa esta lista y escríbela con tus palabras -->
 - Elegí la API (TheCatAPI) y el tema de la app.
 - Diseñé la página: colores (#170E2C y #5B1F61), el título "Simplemente Gato", la estética pixel retro y la distribución del recuadro y el botón.
 - Decidí agregar el maullido, el botón de silencio, la pantalla de razas y que las razas estuvieran en español.
 - Obtuve mi API key y configuré el archivo `.env`.
-- Decidí que la clave no debía ser visible al subir el proyecto a GitHub.
 - Hice yo mismo los commits y los subí a GitHub, y probé la app.
