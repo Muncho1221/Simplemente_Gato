@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simplemente Gato</title>
 
-  <!-- Fuente pixel "Press Start 2P" desde Google Fonts -->
+  <!-- Fuentes pixel desde Google Fonts: "Press Start 2P" para títulos y botones,
+       "VT323" para textos largos porque se lee mejor -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -18,21 +19,39 @@
     <h1 class="titulo">Simplemente Gato</h1>
   </header>
 
-  <!-- Cuerpo: recuadro con la imagen y botón para pedir otra -->
   <main class="contenido">
-    <section class="marco" aria-label="Imagen de gato">
-      <div class="marco__visor">
-        <img id="imagen-gato" class="marco__imagen" alt="Gato aleatorio" hidden>
-        <!-- Aquí se muestran mensajes: cargando, errores, etc. -->
-        <p id="mensaje" class="marco__mensaje" role="status" aria-live="polite">Aquí aparecerá tu gato</p>
-      </div>
+    <!-- Pantalla 1: lista de razas. Es lo primero que se ve -->
+    <section id="pantalla-razas" class="pantalla" aria-labelledby="titulo-razas">
+      <h2 id="titulo-razas" class="subtitulo">Elige una raza</h2>
+      <p class="intro">Conoce las razas de gatos y elige una para ver fotos de ella, o mira gatos de cualquier raza.</p>
+
+      <button id="boton-cualquiera" class="boton" type="button">Ver cualquier gato</button>
+
+      <!-- Mensajes de carga o error de la lista -->
+      <p id="mensaje-razas" class="intro" role="status" aria-live="polite">Cargando razas...</p>
+      <!-- Las tarjetas de razas se crean desde app.js -->
+      <ul id="lista-razas" class="razas"></ul>
     </section>
 
-    <!-- Botones: pedir otro gato y silenciar el maullido -->
-    <div class="controles">
-      <button id="boton-gato" class="boton" type="button">Otro gato</button>
-      <button id="boton-sonido" class="boton boton--icono" type="button" aria-pressed="false" aria-label="Silenciar maullido">🔊</button>
-    </div>
+    <!-- Pantalla 2: recuadro con la imagen y botones. Oculta hasta elegir -->
+    <section id="pantalla-gatos" class="pantalla" aria-labelledby="raza-actual" hidden>
+      <button id="boton-volver" class="boton boton--chico" type="button">&larr; Volver a razas</button>
+      <h2 id="raza-actual" class="subtitulo">Cualquier raza</h2>
+
+      <div class="marco">
+        <div class="marco__visor">
+          <img id="imagen-gato" class="marco__imagen" alt="Foto de un gato" hidden>
+          <!-- Aquí se muestran mensajes: cargando, errores, etc. -->
+          <p id="mensaje" class="marco__mensaje" role="status" aria-live="polite">Aquí aparecerá tu gato</p>
+        </div>
+      </div>
+
+      <!-- Botones: pedir otro gato y silenciar el maullido -->
+      <div class="controles">
+        <button id="boton-gato" class="boton" type="button">Otro gato</button>
+        <button id="boton-sonido" class="boton boton--icono" type="button" aria-pressed="false" aria-label="Silenciar maullido">🔊</button>
+      </div>
+    </section>
   </main>
 
   <script src="js/app.js"></script>

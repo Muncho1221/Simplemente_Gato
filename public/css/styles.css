@@ -6,6 +6,7 @@
   --color-visor: #0D0819;
   --color-acento: #FFD23F;
   --fuente-pixel: "Press Start 2P", monospace;
+  --fuente-texto: "VT323", monospace;
 }
 
 /* ===== Base ===== */
@@ -53,6 +54,82 @@ body {
   justify-content: center;
   gap: 40px;
   padding: 48px 16px;
+}
+
+/* Cada pantalla (razas / gatos) apila su contenido al centro */
+.pantalla {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Sin esto, display: flex le ganaría al atributo hidden */
+.pantalla[hidden] {
+  display: none;
+}
+
+.subtitulo {
+  font-size: clamp(0.9rem, 3vw, 1.4rem);
+  line-height: 1.5;
+  text-align: center;
+  text-shadow: 3px 3px 0 var(--color-encabezado);
+}
+
+.intro {
+  max-width: 640px;
+  font-family: var(--fuente-texto);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* ===== Tarjetas de razas ===== */
+.razas {
+  list-style: none;
+  width: min(100%, 1100px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.raza {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background-color: var(--color-encabezado);
+  box-shadow:
+    0 -4px 0 0 var(--color-blanco),
+    0 4px 0 0 var(--color-blanco),
+    -4px 0 0 0 var(--color-blanco),
+    4px 0 0 0 var(--color-blanco),
+    8px 8px 0 0 #000;
+}
+
+.raza__nombre {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--color-acento);
+}
+
+.raza__dato,
+.raza__descripcion {
+  font-family: var(--fuente-texto);
+  font-size: 1.25rem;
+  line-height: 1.15;
+}
+
+.raza__dato strong {
+  color: var(--color-acento);
+  font-weight: normal;
+}
+
+/* Empuja el botón al fondo para que todas las tarjetas lo tengan alineado */
+.raza .boton {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 /* Recuadro de la imagen: el borde con esquinas recortadas se hace con sombras sin desenfoque */
@@ -133,6 +210,12 @@ body {
   outline-offset: 8px;
 }
 
+/* Botón pequeño: el de cada tarjeta y el de volver */
+.boton--chico {
+  font-size: 0.65rem;
+  padding: 10px 14px;
+}
+
 /* Botón cuadrado de sonido; en gris cuando está silenciado */
 .boton--icono {
   padding: 12px 16px;
@@ -145,5 +228,10 @@ body {
 
 .boton:disabled {
   opacity: 0.6;
-  cursor: wait;
+  cursor: not-allowed;
+}
+
+/* Desactivado no debe cambiar de color al pasar el mouse */
+.boton:disabled:hover {
+  background-color: var(--color-acento);
 }
